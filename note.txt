@@ -1,0 +1,9 @@
+add/delete books for admin user - done
+edit book name for admin user -
+increase book count
+check if rented (don't show rented)
+add base price / day
+send mail when clicked on rent
+send mail when the book is returned
+show base price book id while renting in dialogue box - done
+use bootstrap for front end
