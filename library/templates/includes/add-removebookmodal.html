@@ -1,0 +1,169 @@
+
+<html>
+<!-- Add stock to existing Book -->
+<div class="modal fade" id="Modal-Add{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ book.name }}</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST">
+          {{ add_book_form.csrf_token }}
+          <h4 class="text-center">
+            Are you sure you want to add {{ book.name }}?
+          </h4>
+          <br>
+          <h6 class="text-center">
+            Add this item.
+          </h6>
+          <br>
+            <input id="added_book" name="added_book" type="hidden" value="{{ book.name }}">
+          <div class="d-flex justify-content-center">
+            {{ add_book_form.submit(class="btn btn-outline-success btn-block") }}
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+</html>
+
+
+
+
+<html>
+<!-- Remove stock from existing Book -->
+<div class="modal fade" id="Modal-Remove{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleremoveModalLabel">{{ book.name }}</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST">
+          {{ remove_book_form.csrf_token }}
+          <h4 class="text-center">
+            Are you sure you want to remove {{ book.name }}?
+          </h4>
+          <br>
+          <h6 class="text-center">
+            Remove this item.
+          </h6>
+          <br>
+            <input id="removed_book" name="removed_book" type="hidden" value="{{ book.name }}">
+          <div class="d-flex justify-content-center">
+            {{ remove_book_form.submit(class="btn btn-outline-success btn-block") }}
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+</html>
+
+
+
+
+<html>
+<!-- Delete existing Book -->
+<div class="modal fade" id="Modal-Delete{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampledeleteModalLabel">{{ book.name }}</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST">
+          {{ delete_book_form.csrf_token }}
+          <h4 class="text-center">
+            Are you sure you want to Delete{{ book.name }}?
+          </h4>
+          <br>
+          <h6 class="text-center">
+            Remove this item.
+          </h6>
+          <br>
+            <input id="deleted_book" name="deleted_book" type="hidden" value="{{ book.name }}">
+          <div class="d-flex justify-content-center">
+            {{ delete_book_form.submit(class="btn btn-outline-success btn-block") }}
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+</html>
+
+
+
+
+<html>
+<!-- Edit existing Book -->
+<div class="modal fade" id="Modal-Edit{{ book.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleeditModalLabel">{{ book.name }}</h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form method="POST">
+          {{ edit_book_form.csrf_token }}
+          <h4 class="text-center">
+                {{ edit_book_form.book_name.label() }}
+                {{ edit_book_form.book_name(class="form-control", placeholder="Book Name") }}
+                <br>
+                {{ edit_book_form.author_name.label() }}
+                {{ edit_book_form.author_name(class="form-control", placeholder="Author Name") }}
+                <br>
+                {{ edit_book_form.book_price.label() }}
+                {{ edit_book_form.book_price(class="form-control", placeholder="Book Price $/day") }}
+                <br>
+          </h4>
+          <br>
+          <h6 class="text-center">
+            Edit this item.
+          </h6>
+          <br>
+            <input id="edited_book" name="edited_book" type="hidden" value="{{ book.name }}">
+          <div class="d-flex justify-content-center">
+            {{ edit_book_form.submit(class="btn btn-outline-success btn-block") }}
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+</html>

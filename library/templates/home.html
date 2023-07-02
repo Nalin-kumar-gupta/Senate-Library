@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+    {% block heading %}
+        Home Page
+    {% endblock %}
+
+
+
+    {% block content %}
+    {% if current_user.is_authenticated %}
+        <div class="container">
+          <div class="jumbotron">
+            <h1 class="display-4">Welcome to Our Library</h1>
+
+              <p class="lead">Start renting books by clicking on the button below</p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('book_page') }}" role="button">Go to book shelf</a>
+          </div>
+        </div>
+    {% else %}
+
+        <div class="container">
+          <div class="jumbotron">
+            <h1 class="display-4">Welcome to Our Library</h1>
+            <p class="lead">Discover a world of knowledge and imagination at our library. We offer a vast collection of books, magazines, and digital resources to satisfy the curious minds of all ages. Whether you're a student, a book lover, or a researcher, our library is the perfect place to explore, learn, and connect</p>
+
+            <a class="btn btn-primary btn-lg" href="{{ url_for('book_page') }}" role="button">Get Started</a>
+          </div>
+        </div>
+    {% endif %}
+
+    {% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+    {% block heading %}
+        Manage Books
+    {% endblock %}
+
+{% block content %}
+        <h1>Handel Your Library</h1>
+
+        <div class="btn-group" role="group">
+            <h2>Want to add more books?</h2>
+        </div>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('add_new') }}" role="button">Add New</a>
+
+        <br>
+        <br>
+        <br>
+
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Author</th>
+              <th>Books Available</th>
+              <th>Price</th>
+              <th></th>
+              <th></th>
+
+            </tr>
+          </thead>
+          <tbody>
+          {% for book in books %}
+          {% include 'includes/add-removebookmodal.html' %}
+
+
+
+            <tr>
+              <td>{{ book.id }}</td>
+              <td>{{ book.name }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.book_count }}</td>
+              <td>${{ book.price }}/day</td>
+
+              <td>
+                  <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal-Add{{ book.id }}" >+</button>
+                      {% if book.book_count > 0 %}
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal-Remove{{ book.id }}">-</button>
+                      {% else %}
+                      <button type="button" class="btn btn-secondary" disabled>-</button>
+                      {% endif %}
+
+                  </div>
+                  </td>
+                <td>
+
+                  <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Modal-Delete{{ book.id }}" >Delete</button>
+                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Modal-Edit{{ book.id }}" >Edit</button>
+
+                  </div>
+              </td>
+            </tr>
+
+          {% endfor %}
+
+    {% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+    {% block heading %}
+        Book Section
+    {% endblock %}
+
+
+
+    {% block content %}
+
+        <h1>Book Shelf</h1>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Author</th>
+              <th>Books Available</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for book in books %}
+          {% include 'includes/rentmodal.html' %}
+
+            <tr>
+              <td>{{ book.id }}</td>
+              <td>{{ book.name }}</td>
+              <td>{{ book.author }}</td>
+              <td>{{ book.book_count }}</td>
+              <td>${{ book.price }}/day</td>
+
+              <td>
+                  <div class="btn-group" role="group">
+                        {% if current_user.is_admin %}
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal-Moreinfofor{{ book.id }}">More Info</button>
+                        {% endif %}
+
+                      {% if current_user in book.owners %}
+
+                         <button type="button" class="btn btn-success">Rented</button>
+                      {% endif %}
+                    {% if book.book_count > 0 %}
+                        {% if not current_user.is_admin %}
+                        {% if not current_user in book.owners %}
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal-Rentfor{{ book.id }}">Rent</button>
+
+                        {% endif %}
+                        {% endif %}
+
+                    {% else %}
+                        <button type="button" class="btn btn-outline-secondary" disabled>Unavailable</button>
+                    {% endif %}
+
+                  </div>
+              </td>
+            </tr>
+
+          {% endfor %}
+
+          </tbody>
+        </table>
+    {% endblock %}

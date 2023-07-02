@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+    {% block heading %}
+        Profile
+    {% endblock %}
+
+
+
+    {% block content %}
+
+        <h1>
+            Welcome {{ current_user.username }}
+        </h1>
+
+        <h2>
+            {{ current_date }}
+        </h2>
+
+
+            <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Author</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for book in books %}
+            {% if current_user in book.owners %}
+                {% include 'includes/returnbookmodal.html' %}
+
+            <tr>
+              <td>{{ book.id }}</td>
+              <td>{{ book.name }}</td>
+              <td>{{ book.author }}</td>
+              <td>${{ book.price }}/day</td>
+
+              <td>
+                  <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Modal-Returnfor{{ book.id }}">Return</button>
+                  </div>
+              </td>
+            </tr>
+          {% endif %}
+
+          {% endfor %}
+
+          </tbody>
+        </table>
+
+    {% endblock %}

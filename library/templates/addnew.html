@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+    {% block heading %}
+        Add New Book
+    {% endblock %}
+
+    {% block content %}
+    <body class = "text-center">
+        <div class="container" >
+
+            <form method="POST" class="form-register" style="color:black">
+                {{ form.csrf_token }}
+                {{ form.book_name.label() }}
+                {{ form.book_name(class="form-control", placeholder="Book Name") }}
+                <br>
+                {{ form.author_name.label() }}
+                {{ form.author_name(class="form-control", placeholder="Author Name") }}
+                <br>
+                {{ form.book_price.label() }}
+                {{ form.book_price(class="form-control", placeholder="book price") }}
+                <br>
+
+
+                <br>
+<!--                {{ form.submit.label() }}-->
+                {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+                <br>
+
+            </form>
+
+        </div>
+    </body>
+    {% endblock %}

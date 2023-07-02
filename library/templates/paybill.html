@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center mt-5">Senate Bank</h1>
+      <p class="lead">You have to pay {{ money_to_pay }}</p>
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-6">
+        <form>
+
+          <div class="mb-3">
+            <label for="paymentMethod" class="form-label">Payment Method</label>
+            <select class="form-control" id="paymentMethod" name="paymentMethod">
+              <option>Credit Card</option>
+              <option>Debit Card</option>
+              <option>Net Banking</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Make Payment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
